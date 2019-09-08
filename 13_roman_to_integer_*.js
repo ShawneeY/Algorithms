@@ -1,3 +1,4 @@
+//Option 1
 const romanValue = {
     I: 1,
     V: 5, 
@@ -45,4 +46,18 @@ var romanToInt = function(s) {
         })
     }
     return numericValue;
+};
+
+//Option 2
+var romanToInt = function(s) {
+   let numericValue=0;
+  
+   return s.split("").reduce(function(accumulator, currentValue, currentIndex){
+        if(romanValue[currentValue] < romanValue[s[currentIndex + 1]] ){
+            numericValue -= romanValue[currentValue];
+        }else {
+            numericValue += romanValue[currentValue];
+        }
+     return numericValue;
+   }, 0 )
 };
