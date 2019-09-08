@@ -3,12 +3,17 @@
  * @return {boolean}
  */
 var isPalindrome = function(x) {
- const toAbsoluteValue = Math.abs(x);
- const numArray = x.toString().split("");
- if(x < 0 || numArray[numArray.length-1] === 0) {
-     return false;
- }else {
-     let padindrome = parseInt(numArray.reverse().join(""));
-     return x === padindrome;
- }
+    if(x < 0 || (x!=0 &&x%10===0)) {
+        return false;
+    }
+    if(x >= 0 && x<10 ){
+        return true;
+    }
+
+  let revertedNumber = 0;
+  while(x >revertedNumber) {
+      revertedNumber = revertedNumber*10 + x%10;
+      x = Math.trunc(x/10);
+  }
+  return x === revertedNumber || x === Math.trunc(revertedNumber/10);
 };
