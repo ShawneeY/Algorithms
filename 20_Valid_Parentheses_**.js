@@ -2,7 +2,15 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
+
+// If open brackets, push into the stack, if close brackets, check if top
+// of the stack is the same kindda open bracket, if so, pop it, if not, return
+// false directly. 
+// Reason being, does not matter what kind or what direction comes next,
+// open or close, least one different kind in between.
+
+
+ var isValid = function(s) {
     if(s.length % 2 !== 0) {
         return false;
     }
