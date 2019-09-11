@@ -2,5 +2,5 @@
 - FILO
 
 ## Linked List
-- Pointer -> next
-- prev -> val -> next -> null
+nested objects with value and pointer to the next
+https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571
