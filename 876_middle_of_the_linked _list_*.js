@@ -6,27 +6,18 @@ var middleNode = function(head) {
     if(!head.next){
         return head;
     }
-    var mergeHead = {value:-1, next:null}, 
-    crt = mergeHead;
     var count = 0;
-       while(head){
-           crt.next= head.next
-           crt = crt.next;
-           head=head.next
-           count++;
-       } 
+    var current = head;
+    
+    while(current){
+        current = current.next;
+        count++;
+    } 
    
-   var getMiddelNode = function(count) {
-       if(count%2){
-           return (count-1)/2
-       }else {
-           return count/2;
-       }
-   }
-   var middleNode = getMiddelNode(count);
+   var middleNodeIndex = count%2 != 0 ? (count-1)/2 : count/2;
 
-   for(i=0; i<middleNode; i++) {
-       mergeHead = mergeHead.next;
+   for(i=0; i<middleNodeIndex; i++) {
+       head = head.next;
    }
-    return mergeHead;
+   return head;
 };
