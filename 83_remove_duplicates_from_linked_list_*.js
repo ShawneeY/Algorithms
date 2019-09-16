@@ -3,7 +3,7 @@ var deleteDuplicates = function(head) {
     if(head === null || head.next ===null){
         return head;
     }
-    var distinctList = head;
+    var headRef = head;
     
     // head != null && head.next != null means breaks when gets to 2nd last
     while(head!=null && head.next!=null) {
@@ -17,5 +17,5 @@ var deleteDuplicates = function(head) {
            head = head.next 
         }
     }
-    return distinctList;
+    return headRef;
 };
