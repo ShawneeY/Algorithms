@@ -11,3 +11,4 @@ var reverseList = function(head) {
     
     return prev;
   };
+//https://www.geeksforgeeks.org/reverse-a-linked-list/
