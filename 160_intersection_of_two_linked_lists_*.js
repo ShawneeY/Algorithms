@@ -1,17 +1,12 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
 
-/**
- * @param {ListNode} headA
- * @param {ListNode} headB
- * @return {ListNode}
- */
 var getIntersectionNode = function(headA, headB) {
+    // edge case two invalid lists
+    // since two lists share the tail after intersection
+    // get counts of two
+    // make two lists point to pointer has same length
+    // edge case same without the diff count
+    // then check next for both
+
     if(headA === null|| headB === null) {
         return null
     }
