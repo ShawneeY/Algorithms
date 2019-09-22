@@ -6,6 +6,7 @@ var deleteDuplicates = function(head) {
     var headRef = head;
     
     // head != null && head.next != null means breaks when gets to 2nd last
+    // Compare current with next, if false, ref move to next, then repeat.
     while(head!=null && head.next!=null) {
         if(head.val === head.next.val){
             if(head.next.next === null){
