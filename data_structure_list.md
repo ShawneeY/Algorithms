@@ -28,6 +28,11 @@ https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571
   prev = current;// move prev forward
   current = next; // move current forward
 
+  gif: https://www.geeksforgeeks.org/reverse-a-linked-list/
+
+- Palindrome:
+  second half reverse and compare each.
+
 
 
   
