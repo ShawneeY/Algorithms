@@ -33,6 +33,13 @@ https://codeburst.io/js-data-structures-linked-list-3ed4d63e6571
 - Palindrome:
   second half reverse and compare each.
 
+## Binary Tree
+- Traverse:
+  - Inorder
+    Left Root Right
+  - Preorder
+  - Postorder
+
 
 
   
