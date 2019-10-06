@@ -21,3 +21,36 @@ var postorder = function(root) {
     newList.push(root.val);
     return newList;
 };
+
+// Iterative
+
+var postorder = function(root) {
+    
+    if(root === null) {
+        return [];
+    }
+    
+    var newList = [];
+    var stack = [];
+    var current = root;
+    
+    while(current != null || stack.length > 0){
+        while(current != null){
+            if(current.children){
+                stack.push(current);
+            }
+            current = current.children[0];
+        }
+        current = stack.pop();
+        var subList = current.children;
+        if(subList && subList.length > 0) {
+            newList.push(subList[0].val);
+            subList.splice(0,1);
+            if(subList.length > 0) {
+                stack.push(subList);
+            }
+            current = subList[0];
+        }
+    }
+    return newList;
+};
