@@ -12,3 +12,27 @@ var binaryTreePaths = function(root) {
         return [...left, ...right];
     }
 };
+
+///////////////////////////////////////
+
+var binaryTreePaths = function(root) {
+    var paths = [];
+
+    var pathRecur = function(node, path) {
+        if (!node) return;
+
+        var pathToAdd = path == "" ? node.val : "->"+node.val;
+        path += pathToAdd;
+
+        if (!node.left && !node.right) {
+            paths.push(path);
+            return;
+        } else {
+            pathRecur(node.left, path);
+            pathRecur(node.right, path);
+        }
+    }
+
+    pathRecur(root, "");
+    return paths;
+};
