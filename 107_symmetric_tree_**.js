@@ -1,6 +1,4 @@
 var levelOrderBottom = function(root) {
-    // base case
-    
     var levels = [];
     var levelTraversal = function(root, level){
       if(root === null){
