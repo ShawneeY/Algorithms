@@ -14,6 +14,9 @@ var copyRandomList = function(head) {
 };
 
 //ac
+// Deep copy means copy value not reference
+// map value <-> node relationship 
+// form list follow relationship in map
 var copyRandomList = function(head) {
     const map = new Map();
  
@@ -31,3 +34,4 @@ var copyRandomList = function(head) {
 
     return copy(head);
 };
+
