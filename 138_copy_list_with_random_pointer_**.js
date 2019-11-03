@@ -35,3 +35,36 @@ var copyRandomList = function(head) {
     return copy(head);
 };
 
+//nac
+var copyRandomList = function(head) {
+    if(!head){
+        return null;
+    }
+    var dummyHead = {val:null, next:null, random:null}
+    dummyHead.next = head;
+    
+    var map = new Map();
+ 
+    var prev = dummyHead;
+    map[prev] = prev;
+    var curr = head;
+     
+    while(curr){
+       if(!map[curr]){
+           map[curr] = {val:curr.val, next: null, random:null}
+       }
+       
+       if(!map[curr.random] && curr.random){
+           map[curr.random] = {val: curr.random.val, next:null, random:null};
+       }
+       
+       map[prev].next = map[curr];
+       map[curr].random =  map[curr.random] ? map[curr.random] : null;
+ 
+       prev = curr;
+       curr = curr.next;
+    }
+     return map[head];
+    
+ };
+
