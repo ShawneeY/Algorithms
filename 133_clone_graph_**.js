@@ -1,37 +1,24 @@
-/**
- * // Definition for a Node.
- * function Node(val,neighbors) {
- *    this.val = val;
- *    this.neighbors = neighbors;
- * };
- */
-/**
- * @param {Node} node
- * @return {Node}
- */
 var cloneGraph = function(node) {
-    // BFS : search through the graph not finding the shortest path
+    if (!node) return node;
     
-    var newGraph = {val:null, neighbors:[]};
-
-    var helper = function(node){
-        if( node.visited){
-            return node;
-        }
-        var val = node.val;
-        
-        node['visited'] = true;
-       
-        
-        newGraph.val = val;
-        
-
-        newGraph.neighbors[0] = helper(node.neighbors[0]);
-        newGraph.neighbors[1] = helper(node.neighbors[1]);
-        console.log(newGraph)
-        return newGraph
-        
-    }
-    helper(node)
-    return newGraph;
+    const seen = {};
+    const copy = new Node(node.val, []);
+    
+    seen[node.val] = copy;
+    dfs(node, seen, copy)
+    
+    return copy
 };
+
+var dfs = function(node, seen, copies) {
+    for (let neighbor of node.neighbors) {
+        if (!seen[neighbor.val]) {
+            const copy = new Node(neighbor.val, []);
+            seen[neighbor.val] = copy;
+            copies.neighbors.push(copy);
+            dfs(neighbor, seen, copy);
+        } else {
+            copies.neighbors.push(seen[neighbor.val])
+        }
+    }
+}
