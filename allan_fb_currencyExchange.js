@@ -17,7 +17,9 @@ Queries:
 Results:
 [true, true, false]
 
+https://leetcode.com/playground/Wu4jEzGQ
 */
+
 
 var constructGraph = function(graph, from, to){
     if(graph.get(from)){
