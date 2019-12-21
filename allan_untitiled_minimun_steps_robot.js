@@ -23,36 +23,66 @@
  *
  * Result is 6 steps.
  * */
+// var a = 1;
+// while(a++ > 5) {console.log(a)} // 1, 2, 3, 4
+// while(++a > 5) {console.log(a)} // 2, 3, 4
 
+// return a++ // 1
+// return ++a // 2
+
+var posToString = function(x,y){
+    return `${x}:${y}`;
+}
 function stepsToObstacle(grid) {
     if(grid.length === 0 || grid[0].length === 0){
         return 0;
     }
-    var pathMap = new Map();
-    var steps = 1;
-    var que = [grid[0][0]]
+    var visited = new Set();
+    var steps = 0;
+    var que = [[0,0]]
+    
+    visited.add(posToString(0,0));
     while(que.length > 0){
-        for(var breath in que){
-            var nextBreath = [];
-            for(var i = 0; i < breath.length; i++){
-                var curr = breath[i];
-                var path1 = [curr[0], curr[1]+1];
-                var path2 = [curr[0]+1, curr[1]];
-                
-                if(grid[path1] == 9 || grid[path2] == 9){
-                    return steps;
-                }
-                
-                if(grid[path1] === 1){
-                    nextBreath.push(path1);
-                }
-                if(grid[path2] === 1){
-                    nextBreath.push(path2);
-                }
+        console.log({que, visited})
+        var length = que.length;
+        for(var i = 0; i < length; i++){
+            var curr = que.shift();
+            var row = curr[0];
+            var col = curr[1];
+            
+            if(grid[row][col] == 9){
+                return steps
             }
+            
+            var offsets = [[1,0], [-1,0], [0,1], [0,-1]]
+            
+            for(var offset of offsets){
+                var r = row + offset[0];
+                var c = col + offset[1];
+                
+                if(r < 0 || r >= grid.length || c < 0 || c >= grid[0].length) continue;
+                if(grid[r][c] == 0) continue;
+                if(visited.has(posToString(r,c))) continue;
+                
+                que.push([r,c]); 
+                visited.add(posToString(r,c));
+
+            }
+            
         }
-        que = nextBreath;
-        steps++
+        steps+=1;
     }
-    return 0;
+    return -1;
 }
+
+
+var grid = [
+[1, 1, 1, 1, 0],
+[0, 0, 0, 1, 0],
+[0, 1, 1, 1, 0],
+[1, 1, 0, 0, 0],
+[9, 0, 0, 0, 0]
+];
+
+var result = stepsToObstacle(grid);
+console.log('result', result);
