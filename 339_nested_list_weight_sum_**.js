@@ -41,28 +41,49 @@
  * @return {number}
  */
 var depthSum = function(nestedList) {
+    let val = 0;
     
+     for( let item of nestedList){
+         let lvl = 1;
+         let que = [item];
+         while(que.length > 0){
+             let length = que.length;
+             for (let i = 0; i < length; i++){
+                 let curr = que.shift();
  
-   let val = 0;
-   let lvl = 1;
-    for( let item of nestedList){
-        let que = [item];
-        while(que.length > 0){
-            let length = que.length;
-            for (let i = 0; i < length; i++){
-                let curr = que.shift();
-
-                if(curr.isInteger()){
-                    val = curr.getInteger() * lvl;   
-                }else {
-                    que.push(curr.getList());
-                }
-            }
-            lvl = lvl + 1;
+                 if(curr.isInteger()){
+                     val += curr.getInteger() * lvl;   
+                 }else {
+                     for(let nextItem of curr.getList()) {
+                         que.push(nextItem);
+                     }
+                 }
+             }
+             lvl = lvl + 1;
+         }
+     }
+ 
+ 
+     return val;
+ 
+ };
+var depthSum = function(nestedList) {
+    let val = 0;
+  
+    let dfs = function(item, lvl){
+        if(item.isInteger()){
+            val = val + item.getInteger() * lvl;
+            return; 
+        }
+       for(let i of item.getList()){
+            dfs(i, lvl + 1)
         }
     }
     
-
-    return val;
-    
-};
+    for(let list of nestedList){
+        let lvl = 1;
+        dfs(list, lvl);
+    }
+     return val;
+ 
+ };
