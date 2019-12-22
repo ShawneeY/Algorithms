@@ -30,8 +30,6 @@ var rightSideView = function(root) {
     }
     
     let que = [root];
-    let lvl = 0;
-    
     let right = [];
     while(que.length > 0){
         let length = que.length;
@@ -49,7 +47,6 @@ var rightSideView = function(root) {
                 que.push(curr.right);
             }
         }
-        console.log(layerVal)
         right.push(layerVal.pop());
     }
     return right;
