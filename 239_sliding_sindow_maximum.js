@@ -8,9 +8,6 @@ var maxSlidingWindow = function(nums, k) {
        return [];
     }
 
-    
-    let start = 0
-    let end = start + k - 1;
     let length = nums.length;
     let max = [];
     let slideCount = length - k;
@@ -18,7 +15,6 @@ var maxSlidingWindow = function(nums, k) {
     
     for(let start = 0; start <= slideCount; start++){
         
-        let sum = 0;
         let end = 0
         let windowMax = Number.MIN_SAFE_INTEGER;
         while(end < k){
