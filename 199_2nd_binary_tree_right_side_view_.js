@@ -52,7 +52,7 @@ var rightSideView = function(root) {
     return right;
 };
 
-// 二刷
+// 二刷 bfs
 
 
 var rightSideView = function(root) {
@@ -90,4 +90,36 @@ var rightSideView = function(root) {
     }
    return  result;
     
+};
+
+// 二刷 recursion
+
+var rightSideView = function(root) {
+    let recursion = function(node, lvl, map){
+        
+        if(node === null) return; // forgot base case
+
+        let lvlResult = node || null
+  
+        if(lvlResult !== null){
+            map.set(lvl, lvlResult.val);
+        }
+        recursion(node.left, lvl+1, map);
+        recursion(node.right, lvl+1, map);
+    }
+    
+    if(root === null){
+        return []
+    }
+    
+    let results = new Map();
+    let lvl = 0;
+    let rights = [];
+    
+    recursion(root, lvl, results);
+   
+    results.forEach(function(value){ // this is the way to iterate a hashmap in js
+        rights.push(value);
+    })
+    return rights;
 };
