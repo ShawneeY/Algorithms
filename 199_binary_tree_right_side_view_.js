@@ -51,3 +51,43 @@ var rightSideView = function(root) {
     }
     return right;
 };
+
+// 二刷
+
+
+var rightSideView = function(root) {
+
+    if(root === null){
+       
+       return [];
+    }
+    
+    let queue = [root];
+    let result = [];
+    
+    while(queue.length > 0){
+        let length = queue.length;
+        let layer = []; 
+        let right = null;
+         
+        for(let i = 0; i < length; i++){
+            let curr = queue.pop();
+            
+            if(curr == null) continue;
+            
+           
+            
+            if(right === null){
+                right = curr.val;
+                result.push(right);
+            }
+
+            queue.unshift(curr.right);
+            queue.unshift(curr.left);
+        
+        }
+ 
+    }
+   return  result;
+    
+};
