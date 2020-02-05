@@ -10,14 +10,11 @@
  * @param {number[]} postorder
  * @return {TreeNode}
  */
+//Why from right to left
 var buildTree = function(inorder, postorder) {
     
-     let length = inorder.length;
-    let rootnode = postorder[length - 1];
-    let rootIn = inorder.indexOf(rootnode);
-
-    let postlist = postorder;
-    let inlist = inorder;
+   
+ 
     
     var build = (inlist, postlist) => {
 

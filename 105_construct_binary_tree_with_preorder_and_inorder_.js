@@ -1,3 +1,5 @@
+// Why from left to right?
+
 var buildTree = function(preorder, inorder) {
     var helper = function(preorder, inorder) {
         // base case
