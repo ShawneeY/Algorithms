@@ -11,4 +11,4 @@ var findMedianSortedArrays = function(nums1, nums2) {
         const n2 = combined[length/2];
         return (n1+n2)/2
     }
-};
+};  
