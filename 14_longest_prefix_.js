@@ -33,3 +33,37 @@ const longestCommonPrefix = (strs) => {
     }
     return strs[0]
 }
+
+// BFS
+var longestCommonPrefix = function(strs) {
+    if(strs.length === 0){
+        return ""
+    }
+    
+    const head = strs.shift();
+    let que = head.split("");
+    let result = [];
+    
+    while(que.length > 0){
+        let curr = que.shift();
+        result.push(curr);
+
+        for(let i = 0; i < strs.length; i++){
+           if(!strs[i]) {
+               result.pop();
+               return result.join(""); 
+           }
+            
+            let curr2 = strs[i].charAt(0);
+            strs[i] = strs[i].substring(1);
+            
+            if(curr2 !== curr){
+                result.pop();
+                return result.join(""); 
+            }
+        }
+
+    }
+    
+   return result.join("");
+}
