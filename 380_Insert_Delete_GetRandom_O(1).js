@@ -2,7 +2,8 @@
  * Initialize your data structure here.
  */
 var RandomizedSet = function() {
-    this.set = new Set();
+    this.arr = new Array();
+    this.map = new Map();
 };
 
 /**
@@ -11,11 +12,11 @@ var RandomizedSet = function() {
  * @return {boolean}
  */
 RandomizedSet.prototype.insert = function(val) {
-     const set = this.set;
-    if(set.has(val)){
+    if(this.map.has(val)){
         return false;
     }else {
-        set.add(val);
+        this.map.set(val, this.arr.length)
+        this.arr.push(val);
         return true;
     }
 };
@@ -26,12 +27,18 @@ RandomizedSet.prototype.insert = function(val) {
  * @return {boolean}
  */
 RandomizedSet.prototype.remove = function(val) {
-    if(this.set.has(val)){
-        this.set.delete(val)
-        return true;
-    }else {
-        return false
+    if(!this.map.has(val)){
+        return false;
     }
+    const end = this.arr[this.arr.length - 1];
+    const endIndex = this.map.get(end);
+    const valueIndex = this.map.get(val);
+    this.arr[this.arr.length - 1] = val;
+    this.arr[valueIndex] = end;
+    this.arr.pop();
+    this.map.set(end, valueIndex);
+    this.map.delete(val);
+    return true;
 };
 
 /**
@@ -39,16 +46,8 @@ RandomizedSet.prototype.remove = function(val) {
  * @return {number}
  */
 RandomizedSet.prototype.getRandom = function() {
-    const size = this.set.size;
-    const index = Math.floor(Math.random() * size);
-    console.log(index)
-    let counter = 0;
-    for(let entry of this.set.entries()){
-        if(counter === index){
-            return entry[0];
-        }
-        counter++;
-    }
+   let randomIndex = Math.floor(Math.random() * this.arr.length);
+   return this.arr[randomIndex];
 };
 
 /** 
