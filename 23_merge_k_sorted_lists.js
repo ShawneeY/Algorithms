@@ -49,3 +49,45 @@ var mergeKLists = function(lists) {
     
     return root;
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode[]} lists
+ * @return {ListNode}
+ */
+var mergeKLists = function(lists) {
+    const sort = lists => {
+
+        return lists.sort((a,b) => { return (a === null ? 0 : a.val) -  (b === null ? 0 : b.val)})
+        
+    }
+    
+    let dummyHead = {val:null, next:null}
+    let current = dummyHead;
+    
+    while(lists.length > 0){
+        sort(lists);
+        
+        let min = lists.shift();
+        
+        if(min !== null){
+            current.next = min;
+            current = current.next;
+            
+            min = min.next;
+            if(min !== null){
+                lists.unshift(min);
+            }
+        }
+    }
+    
+    return dummyHead.next;
+    
+};
