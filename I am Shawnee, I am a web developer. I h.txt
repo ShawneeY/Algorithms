@@ -1,0 +1,31 @@
+I am Shawnee, I am a web developer. I have more than 6 years of coding experience 
+back in Australia. I can work on both front end and back end, but my interests and 
+focus is on the front end. HTML, CSS and javascript. Especially javacript, I have
+experience with both using framework and vanilla javacript. With Frameworks, mainly 
+React js and redux or apollo to pair with, Jquery when I first started writing code,
+some exposure to Angular, polymore and Vue js.
+
+My previous employer is called realestate.com.au(a property listing platform, the equverlant of Zillow in US). They have Australia's no.1 online
+community for properties. It provides a listing directory for the buyers as 
+well as relavant information you need to buy a property such as suburb profile, 
+price trend and home loan options.
+
+My team at Rea takes care of the two most important pages of the website. search
+result page and property detail page. Goal is to enhance the user experience.
+
+My last project is call smart hide. It allows the users to hide the listings they 
+see a lot and not intereted from listing page, review and unhide them from their 
+user collection dashboard. 
+
+So the implementation includes two parts: 
+1. To be able to hide the listings from either search result page
+2. To be able to navigate to collection page wherever they at on the wensite
+
+I am in charge of building the node module
+Since our module users have different module systems of their code bases.
+One is using es6 modules systems on the frontend, and nodejs, so commonjS on the backend. the other one is using AMD, backend use node, which uses commonJs
+"The main difference between AMD and CommonJS lies in its support for asynchronous module loading."
+
+expose es module: package.json main: module index.js type:modules
+
+So two builds, UMD and es modules, nodejs can build, es6 can tree shak

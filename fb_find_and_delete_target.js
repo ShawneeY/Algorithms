@@ -6,31 +6,6 @@
 // "property: value" pair in the M length array
 
 
-function removeElement(l1, l2){
-  function swap(i, arr){
-     let tmp = arr[i];
-     arr[i] = arr[arr.length - 1];
-     arr[arr.length - 1] = tmp;
-  }
-  const obj2 = {};
-  for(let i = 0; i < l2.length; i++){
-    for(const key of Object.keys(l2[i])){
-      
-      (obj2[key] || (obj2[key] = [])).push(l2[i][key])
-    }
-  }
-  for(let i = 0; i < l1.length; i++){
-    let curr1 = l1[i];
-    const keys = Object.keys(obj2);
-    for(let key of keys){
-      if(obj2[key].includes(curr1[key])){
-        swap(i,l1);
-        l1.pop()
-      }
-    }
-  }
-}
-
 const arr1 = [
     {
         'name': 'Allan',
@@ -50,18 +25,32 @@ const arr1 = [
 
 
 const arr2 = [
-    {'name': 'Allan'},
-    {'city': 'xian'}
+    {'name': 'Al'},
+    {'city': 'GGGG'}
 ]
 
-// {
-//   'key': [v1,v2]
-// }
+const findMatch = obj => {
+    return !!Object.entries(obj).find(entry => {
+      let key = entry[0];
+      let value = entry[1];
+      return !!arr2.find(a2 => a2[key] === value)
+    })
+}
 
-const arr3 = [
-    {'name': 'XiaoYu'},
-    {'city': 'Lanzhou'}
-]
+const deleteMatch = index => {
+  let tmp = arr1[index];
+  let last = arr1[arr1.length - 1];
+  arr1[index] = last;
+  arr1[arr1.length - 1] = tmp;
+  arr1.pop();
+}
 
-removeElement(arr1, arr2);
-console.log(arr1)
+for(let i = 0; i < arr1.length; i++){
+    let obj = arr1[i];
+    if(findMatch(obj)){
+      deleteMatch(i);
+      i--
+    } 
+}
+
+console.log(arr1);
