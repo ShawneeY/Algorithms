@@ -11,7 +11,7 @@ var wordBreak = function (s, wordDict) {
     const dictSet = new Set(wordDict);
     const memo = new Map(); // string -> boolean
 
-    const helper = (str, set, memo) => {
+    const helper = (str, dics, memo) => {
         if (str.length == 0) return true;
         if (memo.has(str)) {
             return memo.get(str);
